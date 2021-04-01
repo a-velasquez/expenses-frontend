@@ -1,5 +1,5 @@
 import React from "react";
-
+import AccountInput from "../components/AccountInput";
 class AccountsContainer extends React.Component {
 
 
@@ -13,3 +13,4 @@ class AccountsContainer extends React.Component {
 }
 
 export default AccountsContainer;
+
