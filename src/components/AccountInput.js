@@ -1,6 +1,4 @@
 import React from "react";
-
-
 class AccountInput extends React.Component {
 
   render() {

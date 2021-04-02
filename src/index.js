@@ -5,9 +5,6 @@ import thunk from "redux-thunk";
 import { Provider } from 'react-redux';
 import accountReducer from './reducers/accountReducer'
 
-
-// set up store
-
 import App from "./App";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
