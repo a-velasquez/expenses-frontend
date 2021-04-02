@@ -1,3 +1,3 @@
-export default function accountReducer(state = {accounts: []}, action) {
-  return action.payload
+export default function accountReducer(state = { accounts: [] }, action) {
+  return state;
 }
