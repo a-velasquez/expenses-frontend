@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "react-redux"
+import { addAccount } from "../actions/addAccount"
 class AccountInput extends React.Component {
   
   // local state
@@ -13,8 +15,9 @@ class AccountInput extends React.Component {
     })
   }
 
-  handleSubmit = () => {
-
+  handleSubmit = (event) => {
+    event.preventDefault()
+    this.props.addAccount(this.state)
   }
 
   render() {
@@ -32,4 +35,4 @@ class AccountInput extends React.Component {
   }
 }
 
-export default AccountInput;
+export default connect(null, {addAccount})(AccountInput);
