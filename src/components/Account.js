@@ -10,7 +10,6 @@ const Account = (props) => {
   
   return (
     <li>
-      {account ? null : <Redirect to='/accounts'/>}
        {account ? account.name : null} - {account ? account.balance : null}
     </li>
   )
