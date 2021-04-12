@@ -1,6 +1,6 @@
 import React from "react";
 import AccountInput from "../components/AccountInput";
-import { Route } from 'react-router-dom';
+import { Route, Switch } from "react-router-dom";
 import Accounts from "../components/Accounts"
 import { connect } from "react-redux";
 import { fetchAccounts } from "../actions/fetchAccounts"
@@ -14,19 +14,22 @@ class AccountsContainer extends React.Component {
   render() {
     return (
       <div>
-        <Route path="/accounts/new" component={AccountInput} />
-        <Route
-          path="/accounts/:id"
-          render={(routerProps) => (
-            <Account {...routerProps} accounts={this.props.accounts} />
-          )}
-        />
-        <Route
-          path="/accounts"
-          render={(routerProps) => (
-            <Accounts {...routerProps} accounts={this.props.accounts} />
-          )}
-        />
+        <Switch>
+          <Route path="/accounts/new" component={AccountInput} />
+          {/* accounts/new has to be first or else accounts/:id will render instead of accounts/new since :id is just a stand-in*/}
+          <Route
+            path="/accounts/:id"
+            render={(routerProps) => (
+              <Account {...routerProps} accounts={this.props.accounts} />
+            )}
+          />
+          <Route
+            path="/accounts"
+            render={(routerProps) => (
+              <Accounts {...routerProps} accounts={this.props.accounts} />
+            )}
+          />
+        </Switch>
       </div>
     );
   }
