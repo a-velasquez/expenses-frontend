@@ -9,10 +9,10 @@ const Account = (props) => {
   console.log(props)
   
   return (
-    <li>
+    <h2>
        {account ? account.name : null} - {account ? account.balance : null}
-    </li>
+    </h2>
   )
 }
 
-export default Account;
+export default Account;  
