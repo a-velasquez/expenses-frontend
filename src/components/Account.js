@@ -1,5 +1,6 @@
 import React from 'react';
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import TransactionsContainer from '../containers/TransactionsContainer';
 
 //functional component - just displaying info not updating state
 
@@ -9,10 +10,13 @@ const Account = (props) => {
   console.log(props)
   
   return (
-    <h2>
-       {account ? account.name : null} - {account ? account.balance : null}
-    </h2>
+    <div>
+      <h2>
+        {account ? account.name : null} - {account ? account.balance : null}
+      </h2>
+      <TransactionsContainer />
+    </div>  
   )
 }
 
-export default Account;  
+export default Account;   
