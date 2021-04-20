@@ -1,12 +1,21 @@
 import React from 'react';
-import TransactionsContainer from '../containers/TransactionsContainer';
+import { connect } from 'react-redux'; 
 
 
 class TransactionInput extends React.Component {
   render() {
     return (
       <div>
-        Transaction Input
+        <form>
+          <label>Transaction Type:</label>
+          <select>
+            <option>deposit</option>
+            <option>withdraw</option>
+          </select><br/>
+          <label>Transaction Amount:</label>
+          <input type='text' name='amount' />
+          <input type='submit' />
+        </form>
       </div>
     )
   }
