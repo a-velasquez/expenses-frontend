@@ -1,23 +1,42 @@
 import React from 'react';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 
 
 class TransactionInput extends React.Component {
+  
+  //local state
+  state = {
+    kind: "",
+    amount: "",
+  };
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+  
+
   render() {
     return (
       <div>
         <form>
           <label>Transaction Type:</label>
-          <select>
+          <select
+            name="kind"
+            value={this.state.kind}
+            onChange={this.handleChange}
+          >
             <option>deposit</option>
             <option>withdraw</option>
-          </select><br/>
+          </select>
+          <br />
           <label>Transaction Amount:</label>
-          <input type='text' name='amount' />
-          <input type='submit' />
+          <input type="text" name="amount" value={this.state.amount} onChange={ this.handleChange}/>
+          <input type="submit" />
         </form>
       </div>
-    )
+    );
   }
 }
 
