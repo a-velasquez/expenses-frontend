@@ -1,17 +1,39 @@
-import React from 'react';
+import React from "react";
+import { connect } from "react-redux";
+import { deleteTransaction } from "../actions/deleteTransaction";
 
-const Transactions = (props) => {
+class Transactions extends React.Component {
+  state = {};
 
-  return (
-    <div>
-      {/* checks if transactions exist first then maps them instead of returning undefined props */}
-      {props.transactions && props.transactions.map(
-        transaction => <li key={transaction.id}>
-          {transaction.kind} - {transaction.amount} posted - {transaction.date}
-        </li>
-      )}
-    </div>
-  )
+  handleDelete = (transaction) => {
+    this.props.deleteTransaction(transaction.id, transaction.account_id);
+  };
+
+  vote = (id) => {
+    this.state[id]
+      ? this.setState({ [id]: (this.state[id] += 1) })
+      : this.setState({ [id]: 1 });
+  };
+
+  render() {
+    return (
+      <div>
+        {this.props.transactions &&
+          this.props.transactions.map((transaction) => (
+            <li key={transaction.id}>
+              {transaction.date} - {transaction.kind} - {transaction.amount}{" "}
+              <button onClick={() => this.vote(transaction.id)}>
+                Vote{" "}
+                {this.state[transaction.id] ? this.state[transaction.id] : 0}
+              </button>
+              <button onClick={() => this.handleDelete(transaction)}>
+                Delete
+              </button>
+            </li>
+          ))}
+      </div>
+    );
+  }
 }
 
-export default Transactions;
+export default connect(null, { deleteTransaction })(Transactions);
